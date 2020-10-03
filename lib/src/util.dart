@@ -8,11 +8,10 @@ part 'percent.dart';
 /// Converts an angle in degrees to radians.
 ///
 /// A radian is the measure of an angle that, when drawn as a central angle of a circle, intercepts an arc whose length is equal to the length of the radius of the circle.
-double toRadians(double angleInDegrees) => angleInDegrees * (pi / 180);
+double toRadians(double degrees) => degrees * (pi / 180);
 
 /// Converts an angle in radians to degrees.
-double toDegrees(double angleInRadiuns) =>
-    (angleInRadiuns * (180 / pi)).roundToDouble();
+double toDegrees(double radians) => (radians * (180 / pi)).roundToDouble();
 
 /// Returns the center of any shape with a given height and width.
 /// Based on Pythagoras Theorem: (altitude) square = (breadth) square + (length) square.
