@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 part 'circle.dart';
 part 'percent.dart';
+part 'imaginary_arc.dart';
 
 /// Converts an angle in degrees to radians.
 ///
@@ -124,4 +125,8 @@ Offset pointOffsetOnArc({
 
 double arcLength(double sweepAngle, double radius) {
   return sweepAngle / toRadians(360) * 2 * pi * radius;
+}
+
+double arcRadius(double sweepAngle) {
+  return sweepAngle;
 }
