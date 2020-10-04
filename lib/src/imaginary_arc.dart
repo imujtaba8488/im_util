@@ -1,5 +1,10 @@
 part of 'util.dart';
 
+// Copyright @ im8488. All rights reserved.
+// Author: iMujtaba Nazki
+// Mathematical Contribution: Isra Itrat Rafiqi & Google.com.
+// Dated: October, 2020
+
 /// A class that represents an imaginary arc enclosed within a rectangular or square path. You feed it with the requisite information and it spits out data that may require complex mathematical calculations for an arc.
 ///
 /// Inside a rectangular path, the arc is on an elliptical path and if inside a square, the arc is on a circular path.
@@ -10,6 +15,10 @@ part of 'util.dart';
 ///
 /// __Explanation:__
 /// One case is when it may be required to get the offsets/coordinates of a given point along an arc (or a circle if [startAngle] is 0 degrees, sweepAngle is 360 degrees, and aspect ratio is 1). In these cases, calculating these offsets may involve complex Mathematical calculations. The goal of an object of this class is to perform and hide these complex Mathematical calculations and conveniently provide the offsets of points of on an arc.
+/// 
+/// __Usage Note:__ 
+/// * I typically used this to create gauges [here](https://github.com/imujtaba8488), however, the applicability dependents totally on imagination and requirement.
+/// * The fields are not marked as immutable (final), hence, can be altered progressive if needed. 
 class ImaginaryArc {
   /// The width of the rectangle enclosing the arc.
   double width;
@@ -58,36 +67,36 @@ class ImaginaryArc {
     );
   }
 
-  /// Returns the offsets of [numberOfPoints] on an arc.
-  List<Offset> get offsets {
-    // The list that holds all the offsets.
-    List<Offset> coordinates = [];
+  /// Returns the coordinates and angle of [numberOfPoints] on an arc.
+  List<Coordinate> get coordinates {
+    // Temporary list that holds all the coordinates.
+    List<Coordinate> coords = [];
 
-    // This one is manual, since the moveAngle is always going to start past the startAngle.
-    coordinates.add(_singlePointOffset(sweepAngle: toRadians(startAngle)));
+    // Since the moveAngle is always going to start past the startAngle, startAngle defines the initial coordinate.
+    coords.add(_singlePointCoordinate(sweepAngle: toRadians(startAngle)));
 
-    // Distance in angle between each coordinate.
+    // Distance in angle between each coordinate (point on the arc).
     final double divisionAngle = toRadians(sweepAngle / numberOfPoints);
 
     // Determines how points should be placed along the arc and how their coordinates should be calculated.
     double moveAngle = toRadians(startAngle) + divisionAngle;
 
     for (int i = 0; i < numberOfPoints; i++) {
-      coordinates.add(_singlePointOffset(sweepAngle: moveAngle));
+      coords.add(_singlePointCoordinate(sweepAngle: moveAngle));
 
       // To moveAngle add the divisionAngle i.e. the distance in angle between each coordinate.
       moveAngle += divisionAngle;
     }
 
-    return coordinates;
+    return coords;
   }
 
-  /// Returns the offset of a single point on an arc.
-  Offset _singlePointOffset({@required double sweepAngle}) {
+  /// Returns the coordinate and angle of a single point on an arc.
+  Coordinate _singlePointCoordinate({@required double sweepAngle}) {
     double xCoord = center.dx + (width - center.dx) * cos(sweepAngle);
     double yCoord = center.dy + (height - center.dy) * sin(sweepAngle);
 
-    return Offset(xCoord, yCoord);
+    return Coordinate(xCoord, yCoord, angle: sweepAngle);
   }
 
   /// Returns the xRadius (i.e. along the x-axis or width of the rectangle) of the arc. The reason to have xRadius rather than just the radius is because the arc may be in elliptical path. However, if arc is in a circular path both [xRadius] and [yRadius] yeild the same result.
