@@ -26,6 +26,6 @@ Todo
 
 * [Feedback](#feedback)
 
-![Pub Version (including pre-releases)](https://img.shields.io/pub/v/im_shapes?include_prereleases)
+<a href="https://ko-fi.com/hacktons"><img src="https://img.shields.io/badge/donate-PayPal-blue.svg" alt="PayPal"></a>
 
-![Become a Patron](https://badgen.net/badge/become/a%20patron/F96854)(patreon.com/imujtaba8488)
+
