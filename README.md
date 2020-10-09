@@ -25,3 +25,7 @@ Todo
 * [NumberStepper](#numberstepper)
 
 * [Feedback](#feedback)
+
+![Pub Version (including pre-releases)](https://img.shields.io/pub/v/im_shapes?include_prereleases)
+
+![Become a Patron](https://badgen.net/badge/become/a%20patron/F96854)(patreon.com/imujtaba8488)

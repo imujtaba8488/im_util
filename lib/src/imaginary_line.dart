@@ -2,6 +2,7 @@ part of 'util.dart';
 
 class ImaginaryLine {
   Offset startOffsets;
+  Offset endOffsets;
   double length;
   int numberOfPoints;
 

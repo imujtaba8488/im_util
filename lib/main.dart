@@ -22,11 +22,11 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           title: Text('Icon Stepper Example'),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(0.0),
           child: AspectRatio(
             aspectRatio: 1,
             child: Transform.rotate(
-              angle: toRadians(90),
+              angle: toRadians(0),
               child: CustomPaint(
                 size: Size.infinite,
                 painter: TestPainter(),
@@ -44,37 +44,41 @@ class TestPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    ImaginaryLine il = ImaginaryLine(
-      startOffsets: Offset(0.0, size.width),
-      length: size.width,
-      numberOfPoints: nPoints,
-    );
+    Offset offset = Offset(5.0, 5.0);
+    offset = offset.scale(3, 3);
+    print(offset);
 
-    ImaginaryLine il2 = ImaginaryLine(
-      startOffsets: Offset(100, 0.0),
-      length: size.width,
-      numberOfPoints: nPoints,
-    );
+    // ImaginaryLine il = ImaginaryLine(
+    //   startOffsets: Offset(0.0, size.width),
+    //   length: size.width,
+    //   numberOfPoints: nPoints,
+    // );
 
-    for (int i = 0; i < il.coordinates.length; i++) {
-      canvas.drawCircle(
-        il.coordinates[i].toOffset,
-        size.width / (nPoints * 3),
-        Paint(),
-      );
+    // ImaginaryLine il2 = ImaginaryLine(
+    //   startOffsets: Offset(0, 0.0),
+    //   length: size.width,
+    //   numberOfPoints: nPoints,
+    // );
 
-      canvas.drawLine(
-        il.coordinates[i].toOffset,
-        il2.coordinates[i].toOffset,
-        Paint()..strokeWidth = 1,
-      );
+    // for (int i = 0; i < il.coordinates.length; i++) {
+    //   canvas.drawCircle(
+    //     il.coordinates[i].toOffset,
+    //     size.width / (nPoints * 3),
+    //     Paint(),
+    //   );
 
-      canvas.drawCircle(
-        il2.coordinates[i].toOffset,
-        size.width / (nPoints * 3),
-        Paint(),
-      );
-    }
+    //   canvas.drawLine(
+    //     il.coordinates[i].toOffset,
+    //     il2.coordinates[i].toOffset,
+    //     Paint()..strokeWidth = 1,
+    //   );
+
+    //   canvas.drawCircle(
+    //     il2.coordinates[i].toOffset,
+    //     size.width / (nPoints * 3),
+    //     Paint(),
+    //   );
+    // }
 
     // ImaginaryArc imaginaryArc = ImaginaryArc(
     //   width: size.width,
